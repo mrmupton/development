@@ -17,17 +17,32 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>dataGridOutput Demo - Grid with pagination</title>
-<?php include_once('config/includeFiles.class.php'); new includeFiles('dataGrid'); ?>	
-		<script type="text/javascript">
-			window.onload = function() { 
-				// you can use "datasource/demo.php" if you have PHP installed, to get live data from the demo.csv file
-				editableGrid.onloadJSON("config/demo.php");
-			}; 
-		</script>
-		
 	</head>
 	
 	<body>
+<?php 
+include_once('config/includeFiles.class.php'); new includeFiles('dataGrid');	
+          
+// create a new dataGridOutput object
+$grid = new dataGridOutput();
+/* 
+*  Add columns. The first argument of addColumn is the name of the field in the databse. 
+*  The second argument is the label that will be displayed in the header
+*/
+$grid->addColumn('id', 'ID', 'integer', NULL, false); 
+$grid->addColumn('name', 'Name', 'string');  
+$grid->addColumn('firstname', 'Firstname', 'string');  
+$grid->addColumn('age', 'Age', 'integer');  
+$grid->addColumn('height', 'Height', 'float');  
+$grid->addColumn('continent', 'Continent', 'string' , fetch_pairs('SELECT id, name FROM continent'),true);  
+$grid->addColumn('country', 'Country', 'string', fetch_pairs('SELECT id, name FROM country'),true );  
+$grid->addColumn('email', 'Email', 'email');                                               
+$grid->addColumn('freelance', 'Freelance', 'boolean');  
+$grid->addColumn('lastvisit', 'Lastvisit', 'date');  
+$grid->addColumn('website', 'Website', 'string');
+$grid->addColumn("action", "", "html", NULL, false);
+$grid->sendQuery('SELECT *, date_format(lastvisit, "%d/%m/%Y") as lastvisit FROM demo')
+?>
 		<div id="wrap">
 		<h1>dataGridOutput Demo - Grid with pagination<a href="../index.html">Back to menu</a></h1> 
 		
