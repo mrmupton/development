@@ -2,11 +2,14 @@
 class dataGridOutput {
 	protected $columns = array();
 	protected $encoding = "utf-8";
-	public $query;
 	public $pageControl;
 
-	function __construct($q){
-		$this->query = $q;
+	public function __construct(){}
+	public function sendQuery($qry)
+	{
+		$stmt = new dataObjectResult($qry);
+		$result = $stmt->result;
+		echo '<script type="text/javascript">window.onload = function() { editableGrid.loadJSONFromString('.$this->getJSON($result).'); editableGrid.initializeGrid(); }</script>';
 	}
 
 	public function addColumn($name, $label, $type, $values = NULL, $editable = true, $field = NULL, $bar = true)
@@ -216,4 +219,14 @@ function fetch_pairs($query){
 		$rows[$key] = $value;
 	}
 	return $rows;
+}
+class dataGrid extends dataGridOutput{
+	public function __construct($qry)
+	{
+		$stmt = new dataObjectResult($qry);
+		$result = $stmt->result;
+		echo '<script type="text/javascript">window.onload = function() { editableGrid.loadJSONFromString('.$this->getJSON($result).'); editableGrid.initializeGrid(); }</script>';
+
+	}
+
 }

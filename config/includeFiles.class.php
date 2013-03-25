@@ -13,7 +13,7 @@ class includeFiles
 			$fti = array();
 			switch($rfq){
 				case "dataGrid":
-					$fti[] = 'dataGrid.class.php';
+					$fti[] = 'dataGridOutput.class.php';
 					//javascript files
 					$fti[] = 'editablegrid-2.0.1.js';
 					$fti[] = 'jquery-1.6.4.min.js';

@@ -3,7 +3,9 @@ class dataObject {
 	private static $link = null ;
     private static function getLink ( ) {
         if ( self :: $link ) { return self::$link; }
-        $ini = '../_private/config.ini' ;
+		$ini = '';
+		if(!file_exists('_private/config.ini')){ $ini .= '../'; };
+		$ini .= '_private/config.ini';
         $parse = parse_ini_file ( $ini , true ) ;
 
         $driver = $parse [ "db_driver" ] ;
