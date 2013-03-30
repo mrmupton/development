@@ -21,7 +21,7 @@
 	
 	<body>
 <?php 
-include_once('config/includeFiles.class.php'); new includeFiles('dataGrid');	
+include_once('root.php'); new includeFiles('dataGrid');	
           
 // create a new dataGridOutput object
 $grid = new dataGridOutput();
