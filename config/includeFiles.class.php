@@ -42,7 +42,7 @@ class includeFiles
 					if($jspos !== false){ $ftivalue = 'javascript/'.$ftivalue; }
 					if($csspos !== false){ $ftivalue = 'css/'.$ftivalue; }
 					//check to see if file exists
-					if(!file_exists($ftivalue)){ trigger_error ("Required File Is Missing: ".$ftivalue, E_USER_NOTICE); };
+					if(!file_exists(ROOT_PATH.$ftivalue)){ trigger_error ("Required File Is Missing: ".$ftivalue, E_USER_NOTICE); };
 					//output value dependant on existence of .php, .css or .js
 					if($phppos !== false){ include_once (ROOT_PATH.$ftivalue); }
 					if($jspos !== false){ echo '<script src="'.URL_PATH.$ftivalue.'"></script>'."\n"; }
