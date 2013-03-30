@@ -1,6 +1,6 @@
 <?php
-include_once ('config/dataObject.class.php');
-include_once ('config/errorReporting.class.php');
+include_once (ROOT_PATH.'config/dataObject.class.php');
+include_once (ROOT_PATH.'config/errorReporting.class.php');
 
 class includeFiles
 {
@@ -44,9 +44,9 @@ class includeFiles
 					//check to see if file exists
 					if(!file_exists($ftivalue)){ trigger_error ("Required File Is Missing: ".$ftivalue, E_USER_NOTICE); };
 					//output value dependant on existence of .php, .css or .js
-					if($phppos !== false){ include_once ($ftivalue); }
-					if($jspos !== false){ echo '<script src="'.$ftivalue.'"></script>'."\n"; }
-					if($csspos !== false){ echo '<link rel="stylesheet" href="'.$ftivalue.'" type="text/css">'."\n"; }
+					if($phppos !== false){ include_once (ROOT_PATH.$ftivalue); }
+					if($jspos !== false){ echo '<script src="'.URL_PATH.$ftivalue.'"></script>'."\n"; }
+					if($csspos !== false){ echo '<link rel="stylesheet" href="'.URL_PATH.$ftivalue.'" type="text/css">'."\n"; }
 				}
 				catch (Error $e){ trigger_error ("Required File Missing: ".$ftivalue, E_USER_NOTICE); }
 			}

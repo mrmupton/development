@@ -6,7 +6,12 @@
 </head>
 
 <body>
-<a href="config/search/admin/test.php">Test Page</a>
-<a href="editableGridDemo.php">Editable Grid Demo</a>
+<?php 
+include('../root.php');
+echo ROOT_PATH."\n<br />";
+echo root_path."\n<br />";
+echo URL_PATH."\n<br />";
+echo url_path."\n<br />";
+?>
 </body>
 </html>
