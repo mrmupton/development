@@ -13,7 +13,7 @@ define('URL_PATH', $h . $_SERVER['SERVER_NAME'] . '/',true);
 
 /* Include includeFiles.class.php to facilitate one include for all include files.         */
 
-include(ROOT_PATH.'config/includeFiles.class.php');
+include(ROOT_PATH.'library/includeFiles.class.php');
 
 /* Use new includeFiles('includeset') to include the set of include files listed in that   */
 /* section of the switch case in includeFiles.class.php.                                   */

@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<a href="config/search/admin/test.php">Test Page</a>
+<a href="library/search/admin/test.php">Test Page</a>
 <a href="editableGridDemo.php">Editable Grid Demo</a>
 </body>
 </html>
