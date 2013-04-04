@@ -1,6 +1,5 @@
 <?php
 require_once('../../../root.php');
-
 // Get all parameters provided by the javascript
 $colname = $_POST['colname'];
 $id = $_POST['id'];
@@ -27,4 +26,3 @@ if ( $stmt = dataObject::prepare("UPDATE ".$tablename." SET ".$colname." = :newv
 }             
 
 echo $return ? "ok" : "error";
-?>

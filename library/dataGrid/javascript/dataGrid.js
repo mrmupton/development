@@ -283,8 +283,6 @@ dataGridOutput.prototype.modelChanged = function(rowIndex, columnIndex, oldValue
 			if (editableGrid.getColumnName(columnIndex) == "continent") editableGrid.setValueAt(rowIndex, editableGrid.getColumnIndex("country"), ""); // if we changed the continent, reset the country
 			displayMessage("Value for '" + editableGrid.getColumnName(columnIndex) + "' in row" + editableGrid.getRowId(rowIndex) + " has changed from '" + oldValue + "' to '" + newValue + "'");
    	    	editableGrid.renderCharts();
-			(rowIndex);
-
 		},
 		error: function(XMLHttpRequest, textStatus, exception) { alert("Ajax failure\n" + errortext); },
 		async: true
