@@ -4,7 +4,6 @@
  * http://editablegrid.net/license
  */
 var docroot = window.location.protocol + '//' + window.location.host + '/';
-
 // helper function to get path of a demo image
 function image(relativePath) {
 	return docroot + "images/" + relativePath;
@@ -265,7 +264,7 @@ dataGridOutput.prototype.updatePaginator = function()
 dataGridOutput.prototype.modelChanged = function(rowIndex, columnIndex, oldValue, newValue, row, onResponse)
 {      
 	$.ajax({
-		url: 'library/update.php',
+		url: docroot + 'library/dataGrid/action/update.php',
 		type: 'POST',
 		dataType: "text",
 		data: {
@@ -308,7 +307,7 @@ function highlight(div_id, style) {
 }
 dataGridOutput.prototype.deleteRow = function (rowIndex){ 
 	$.ajax({
-		url: 'library/delete.php',
+		url: docroot + 'library/dataGrid/action/delete.php',
 		type: 'POST',
 		dataType: "text",
 		data: {
@@ -341,7 +340,7 @@ dataGridOutput.prototype.duplicateRow = function(rowIndex)
 		}
 	}
 	$.ajax({
-		url: 'library/insert.php',
+		url: docroot + 'library/dataGrid/action/insert.php',
 		type: 'POST',
 		dataType: "text",
 		data: {
@@ -373,7 +372,7 @@ dataGridOutput.prototype.addRow = function(rowIndex){
 		}
 	}
 	$.ajax({
-		url: 'library/insert.php',
+		url: docroot + 'library/dataGrid/action/insert.php',
 		type: 'POST',
 		dataType: "text",
 		data: {
@@ -383,7 +382,8 @@ dataGridOutput.prototype.addRow = function(rowIndex){
 		},
 		success: function(response){
 			rowValues['id'] = response,
-			editableGrid.insertAfter(rowIndex, response, rowValues, '', true),
+			editableGrid.insertAfter(rowIndex, response, rowValues),
+			//editableGrid.insertAfter(rowIndex, response, rowValues, '', true),
 			displayMessage("Row Has Been added")
 		},
 		error: function(error){ alert("Ajax Failure: "+error); }

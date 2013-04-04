@@ -1,5 +1,5 @@
 <?php
-require_once('../library/dataObject.class.php');      
+require_once('../../../root.php');
                       
 // Get all parameters provided by the javascript
 $tableval = $_POST['tablename'];
@@ -8,10 +8,6 @@ $vals = $_POST['valuelist'];
 
 $query = "INSERT INTO ".$tableval." (".implode($cols,",").") VALUES (".implode($vals,",").")";
 
-$filename = 'queries.txt';
-$fh = fopen($filename,'w');
-fwrite($fh, $query);
-fclose($fh);
 // This very generic. So this script can be used to update several tables.
 $return=false;
 if ( $stmt = dataObject::prepare($query)) { 

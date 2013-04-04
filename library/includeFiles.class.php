@@ -1,5 +1,5 @@
 <?php
-include_once (ROOT_PATH.'library/dataObject.class.php');
+include_once (ROOT_PATH.'library/dataObject/dataObject.class.php');
 include_once (ROOT_PATH.'library/errorReporting.class.php');
 
 class includeFiles
@@ -40,7 +40,7 @@ class includeFiles
 					//update folder location for class, javascript and css files
 					if($classpos != false){ $ftivalue = 'library/dataGrid/'.$ftivalue; }
 					if($jspos !== false){ $ftivalue = 'library/dataGrid/javascript/'.$ftivalue; }
-					if($csspos !== false){ $ftivalue = 'css/'.$ftivalue; }
+					if($csspos !== false){ $ftivalue = 'library/dataGrid/css/'.$ftivalue; }
 					//check to see if file exists
 					if(!file_exists(ROOT_PATH.$ftivalue)){ trigger_error ("Required File Is Missing: ".$ftivalue, E_USER_NOTICE); };
 					//output value dependant on existence of .php, .css or .js

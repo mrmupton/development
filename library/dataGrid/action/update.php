@@ -1,7 +1,6 @@
 <?php
+require_once('../../../root.php');
 
-require_once('../library/dataObject.class.php');      
-                      
 // Get all parameters provided by the javascript
 $colname = $_POST['colname'];
 $id = $_POST['id'];

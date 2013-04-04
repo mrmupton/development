@@ -5,6 +5,9 @@ class dataObject {
         if ( self :: $link ) { return self::$link; }
 		$ini = '';
 		if(!file_exists('_private/config.ini')){ $ini .= '../'; };
+		if(!file_exists($ini.'_private/config.ini')){ $ini .= '../'; };
+		if(!file_exists($ini.'_private/config.ini')){ $ini .= '../'; };
+		if(!file_exists($ini.'_private/config.ini')){ $ini .= '../'; };
 		$ini .= '_private/config.ini';
         $parse = parse_ini_file ( $ini , true ) ;
 

@@ -18,5 +18,4 @@ include(ROOT_PATH.'library/includeFiles.class.php');
 /* Use new includeFiles('includeset') to include the set of include files listed in that   */
 /* section of the switch case in includeFiles.class.php.                                   */
 /* Example: new includeFiles('dataGrid')                                                   */
-
 ?>
