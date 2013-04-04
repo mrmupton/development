@@ -38,8 +38,8 @@ class includeFiles
 				try {
 					$phppos = strpos($ftivalue, '.php'); $jspos = strpos($ftivalue, '.js'); $csspos = strpos($ftivalue, '.css'); $classpos = strpos($ftivalue, '.class');
 					//update folder location for class, javascript and css files
-					if($classpos != false){ $ftivalue = 'library/'.$ftivalue; }
-					if($jspos !== false){ $ftivalue = 'javascript/'.$ftivalue; }
+					if($classpos != false){ $ftivalue = 'library/dataGrid/'.$ftivalue; }
+					if($jspos !== false){ $ftivalue = 'library/dataGrid/javascript/'.$ftivalue; }
 					if($csspos !== false){ $ftivalue = 'css/'.$ftivalue; }
 					//check to see if file exists
 					if(!file_exists(ROOT_PATH.$ftivalue)){ trigger_error ("Required File Is Missing: ".$ftivalue, E_USER_NOTICE); };
