@@ -1,6 +1,6 @@
 <?php
 include_once (ROOT_PATH.'library/dataObject/dataObject.class.php');
-include_once (ROOT_PATH.'library/errorReporting.class.php');
+include_once (ROOT_PATH.'library/errorReporting/errorReporting.class.php');
 
 class includeFiles
 {
