@@ -6,7 +6,7 @@
 var docroot = window.location.protocol + '//' + window.location.host + '/';
 // helper function to get path of a demo image
 function image(relativePath) {
-	return docroot + "images/" + relativePath;
+	return docroot + "/library/dataGrid/images/" + relativePath;
 }
 
 
@@ -235,13 +235,13 @@ dataGridOutput.prototype.updatePaginator = function()
 	});
 		
 	// "first" link
-	var link = $("<a>").html("<img src='../images/gofirst.png" + "'/> ");
+	var link = $("<a>").html('<img src="'+ image('gofirst.png') + '" /> ');
 	if (!this.canGoBack()) link.css({ opacity : 0.4, filter: "alpha(opacity=40)" });
 	else link.css("cursor", "pointer").click(function(event) { editableGrid.firstPage(); });
 	paginator.append(link);
 
 	// "prev" link
-	link = $("<a>").html("<img src='../images/prev.png" + "'/> ");
+	link = $("<a>").html('<img src="'+ image('prev.png') + '" /> ');
 	if (!this.canGoBack()) link.css({ opacity : 0.4, filter: "alpha(opacity=40)" });
 	else link.css("cursor", "pointer").click(function(event) { editableGrid.prevPage(); });
 	paginator.append(link);
@@ -250,13 +250,13 @@ dataGridOutput.prototype.updatePaginator = function()
 	for (p = 0; p < pages.length; p++) paginator.append(pages[p]).append(" | ");
 	
 	// "next" link
-	link = $("<a>").html("<img src='../images/next.png" + "'/> ");
+	link = $("<a>").html('<img src="'+ image('next.png') + '" /> ');
 	if (!this.canGoForward()) link.css({ opacity : 0.4, filter: "alpha(opacity=40)" });
 	else link.css("cursor", "pointer").click(function(event) { editableGrid.nextPage(); });
 	paginator.append(link);
 
 	// "last" link
-	link = $("<a>").html("<img src='../images/golast.png" + "'/> ");
+	link = $("<a>").html('<img src="'+ image('golast.png') + '" /> ');
 	if (!this.canGoForward()) link.css({ opacity : 0.4, filter: "alpha(opacity=40)" });
 	else link.css("cursor", "pointer").click(function(event) { editableGrid.lastPage(); });
 	paginator.append(link);

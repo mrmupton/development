@@ -1,4 +1,4 @@
-<?php
+<?php 
 class dataObject {
 	private static $link = null ;
     private static function getLink ( ) {

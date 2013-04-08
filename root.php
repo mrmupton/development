@@ -6,6 +6,16 @@
 if(phpversion() >= 5.3) define('ROOT_PATH', __DIR__.'/', true);
 if(phpversion() < 5.3) define('ROOT_PATH',dirpath(__FILE__),true);
 
+/* Define APP_PEPPER for application */
+$ini = '';
+if(!file_exists('_private/config.ini')){ $ini .= '../'; };
+if(!file_exists($ini.'_private/config.ini')){ $ini .= '../'; };
+if(!file_exists($ini.'_private/config.ini')){ $ini .= '../'; };
+if(!file_exists($ini.'_private/config.ini')){ $ini .= '../'; };
+$ini .= '_private/config.ini';
+$parse = parse_ini_file ( $ini , true ) ;
+define('APP_PEPPER',$parse["app_pepper"],true);
+
 /* Define URL_PATH - URL Path exp: http://www.domain.com/ */
 $h = "http://";
 if(isset($_SERVER['HTTPS'])) $h = "https://";
@@ -15,7 +25,7 @@ define('URL_PATH', $h . $_SERVER['SERVER_NAME'] . '/',true);
 
 include(ROOT_PATH.'library/includeFiles/includeFiles.class.php');
 //Initiate default libraries to include
-new includeFiles('dataObject,errorReporting')
+new includeFiles('dataObject,errorReporting,siteSecurity');
 
 /* Use new includeFiles('includeset') to include the set of include files listed in that   */
 /* section of the switch case in includeFiles.class.php.                                   */

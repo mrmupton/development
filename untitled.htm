@@ -3,14 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Untitled Document</title>
-<script src="library/dataGrid/javascript/jquery-1.6.4.min.js" type="text/javascript"></script>
 </head>
+
 <body>
-<?php 
-include_once('root.php');
-new includeFiles('adminBar,headerTemplate');
-include_once('root.php');
-new includeFiles('footerTemplate');
-?>
 </body>
 </html>

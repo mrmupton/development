@@ -16,7 +16,7 @@ if ( $stmt = dataObject::prepare($query)) {
 	$stm->execute();
 	$mxid = $stm->fetch(PDO::FETCH_OBJ)->ID;
 }
-
+blowFishEncrypt::check();
 
 echo $return ? $mxid : "error";
 ?>
