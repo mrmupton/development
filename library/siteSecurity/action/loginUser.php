@@ -1,6 +1,8 @@
 <?php
+session_start();
 
 include_once('../../../root.php');
+
 
 //Retrieve POST variables
 $username = $_POST['username'];
@@ -21,4 +23,14 @@ $pepperedPassword = $password.APP_PEPPER.$storedPepper;
 
 $loginValid = blowfishEncrypt::check($pepperedPassword,$storedPasswordHash);
 
-echo $loginValid ? "Logged In" : "Login Invalid";
+if($loginValid){
+	$_SESSION['username'] = $username;
+	$_SESSION['isloggedin'] = true;
+	$stmt = dataObject::prepare("UPDATE securityUser SET lastLogin = NOW(), lastLogout = NOW() + INTERVAL 30 MINUTE  WHERE userName = :username"); 
+	$stmt->bindParam(':username',$username,PDO::PARAM_STR, 18);
+	$stmt->execute();
+}
+
+$logoutForm = file_get_contents(ROOT_PATH.'library/siteSecurity/forms/logoutForm.php');
+
+echo $loginValid ? 'logout'.' && '.$logoutForm . ' && ' . $username : "Login Invalid";

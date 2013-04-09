@@ -1,6 +1,4 @@
 <?php
-echo '<!-- Included Files from library/includeFiles/includeFiles.class.php -->'."\n";
-echo '<link rel="stylesheet" href="'.URL_PATH.'library/styleSheet/style.php" type="text/css" />'."\n";
 class includeFiles
 {
 	public function __construct($req){
@@ -22,13 +20,12 @@ class includeFiles
 						echo '<script src="'.URL_PATH.'library/'.$rfq.'/javascript/'.str_replace(ROOT_PATH.'library/'.$rfq.'/javascript/','',$file).'"></script>'."\n";
 					}
 				}
-				foreach(glob(ROOT_PATH.'library/'.$rfq.'/css/*.css') as $file) {
+				foreach(glob(ROOT_PATH.'library/'.$rfq.'/css/*') as $file) {
 					echo '<link rel="stylesheet" href="'.URL_PATH.'library/'.$rfq.'/css/'.str_replace(ROOT_PATH.'library/'.$rfq.'/css/','',$file).'" type="text/css" />'."\n";
 				}
 			}
 			catch (Error $e){ trigger_error ('Error Including Files. Directory does not exist'); };
 		}
-		echo '<!-- End of Included Files-->'."\n";
 		foreach($rf as $rfq){
 			foreach(glob(ROOT_PATH.'library/'.$rfq.'/*.php') as $file){ include_once($file); }
 		}
