@@ -11,6 +11,7 @@ session_destroy();
 session_write_close();
 setcookie(session_name(),'',0,'/');
 session_regenerate_id(true);
+unset($_SESSION['username']);
 
 $stmt = dataObject::prepare("UPDATE securityUser SET lastLogout = NOW()  WHERE userName = :username"); 
 $stmt->bindParam(':username',$username,PDO::PARAM_STR, 18);

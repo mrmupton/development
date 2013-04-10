@@ -8,6 +8,8 @@ include_once('../../../root.php');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+setcookie('username',$username, time()+3600, '/');
+
 $return = false; $error = '';
 try {
 	$stmt = dataObject::prepare("SELECT * FROM securityUser WHERE userName = :userName");
@@ -32,5 +34,6 @@ if($loginValid){
 }
 
 $logoutForm = file_get_contents(ROOT_PATH.'library/siteSecurity/forms/logoutForm.php');
+$loginForm = file_get_contents(ROOT_PATH.'library/siteSecurity/forms/loginForm.php');
 
-echo $loginValid ? 'logout'.' && '.$logoutForm . ' && ' . $username : "Login Invalid";
+echo $loginValid ? 'logout'.' && '.$logoutForm . ' && ' . $username : 'login'.' && '.$loginForm;
