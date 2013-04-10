@@ -7,6 +7,12 @@ if(!session_id()){ ini_set('session.gc_maxlifetime',1440); ini_set('session.cook
 <script type="text/javascript">
 var docroot = window.location.protocol + '//' + window.location.hostname + '/';
 $(document).ready(function() {
+	$('.open').click(function() {
+		var w = $('.adminbar').width();
+		if(w < 200){ $('.adminbar').animate({"width":"100%"}, "slow") }
+		else { $('.adminbar').animate({"width":"42px"}, "slow");
+		}
+	});
 <?php 
 	if(isset($_SESSION['username'])){
 		echo '	$("#userval").html("'.$_SESSION['username'].'");'."\n";
@@ -47,16 +53,14 @@ $(document).ready(function() {
     	<img src="<?php echo URL_PATH.'library/adminBar/images/expand.png'; ?>" width="29" height="29" alt="Expand Admin Bar" />
     </div>
 <form id="adminForm" method="post" action="" autocomplete="off">
-    <div class="adminbarform">
-        <table><tbody><tr id="adminBarAccess">
+    <div class="adminbarform"><div id="adminBarAccess">
 <?php 
 	ob_start(); include_once(ROOT_PATH.'library/siteSecurity/forms/logoutForm.php'); $logoutform = ob_get_clean();
 	ob_start(); include_once(ROOT_PATH.'library/siteSecurity/forms/loginForm.php'); $loginform = ob_get_clean();
 	if(isset($_SESSION['username'])){ echo $logoutform; }
 	else{ echo $loginform; }
 ?>
-        </tr></tbody></table>
-    </div>
+    </div></div>
 </form>
     </div>
 </div>
