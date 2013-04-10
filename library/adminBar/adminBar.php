@@ -24,17 +24,15 @@ $(document).ready(function() {
 			datatype: 'text',
 			data:  $(this).serialize(),
 			success: function(response) {
-				var rarray = response.split(' && ')
+				var rarray = response.split(' && ');
+				$("#adminBarAccess").html(rarray[1]);
 				if(rarray[0].indexOf('logout') > -1){
-					$("#adminBarAccess").html(rarray[1]);
 					$("#userval").html(rarray[2]);
 				}
 				if(rarray[0].indexOf('login') > -1){
-					$("#adminBarAccess").html(rarray[1]);
 					if(username !== undefined){ $("#username").val(username); };					
 				}
 				if(rarray[0].indexOf('invalid') > -1){
-					$("#adminBarAccess").html(rarray[1]);
 				}
 			},
 			error: function(error) {
@@ -44,13 +42,21 @@ $(document).ready(function() {
 	});
 });
 </script>
+<div class="adminbar">
+	<div class="open">
+    	<img src="<?php echo URL_PATH.'library/adminBar/images/expand.png'; ?>" width="29" height="29" alt="Expand Admin Bar" />
+    </div>
 <form id="adminForm" method="post" action="" autocomplete="off">
-	<div id="adminBarAccess">
+    <div class="adminbarform">
+        <table><tbody><tr id="adminBarAccess">
 <?php 
 	ob_start(); include_once(ROOT_PATH.'library/siteSecurity/forms/logoutForm.php'); $logoutform = ob_get_clean();
 	ob_start(); include_once(ROOT_PATH.'library/siteSecurity/forms/loginForm.php'); $loginform = ob_get_clean();
 	if(isset($_SESSION['username'])){ echo $logoutform; }
 	else{ echo $loginform; }
 ?>
-	</div>
+        </tr></tbody></table>
+    </div>
 </form>
+    </div>
+</div>

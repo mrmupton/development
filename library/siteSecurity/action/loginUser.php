@@ -8,7 +8,7 @@ include_once('../../../root.php');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-setcookie('username',$username, time()+3600, '/');
+//setcookie('username',$username, time()+3600, '/');
 
 $return = false; $error = '';
 try {

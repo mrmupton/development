@@ -1,8 +1,2 @@
-<table colspacing="0" colpadding="0" class="loginform">
-    <tr>
-        <td>Hello <span id="userval"></span></td>
-        <td><input type="submit" name="submit" id="submit" value="Logout" /></td>
-    </tr>
-    <input id="username" name="username" type="hidden" value="" />
-    <input id="form" name="form" type="hidden" value="logoutUser" />
-</table>
+<td class="welcome">Hello <span id="userval"></span></td>
+<td class="submit"><input type="submit" name="submit" id="submit" value="Logout" /><input id="username" name="username" type="hidden" value="" /><input id="form" name="form" type="hidden" value="logoutUser" /></td>
