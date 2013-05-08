@@ -9,9 +9,17 @@ var docroot = window.location.protocol + '//' + window.location.hostname + '/';
 $(document).ready(function() {
 	$('.open').click(function() {
 		var w = $('.adminbar').width();
-		if(w < 200){ $('.adminbar').animate({"width":"100%"}, "slow") }
-		else { $('.adminbar').animate({"width":"42px"}, "slow");
+		if(w < 200){ 
+			$('.adminbar').animate({"width":"100%"}, "slow"); 
+			$('.open').html('<img src="'+docroot+'library/adminBar/images/contract.png" width="29" height="29" alt="Contract Admin Bar" />'); 
 		}
+		else { 
+			$('.adminbar').animate({"width":"36px"}, "slow");
+			$('.open').html('<img src="'+docroot+'library/adminBar/images/expand.png" width="29" height="29" alt="Contract Admin Bar" />'); 
+		}
+	});
+	$('input[type=text]').focus(function(){
+		$(this).css({'background':'white'});
 	});
 <?php 
 	if(isset($_SESSION['username'])){
@@ -48,6 +56,7 @@ $(document).ready(function() {
 	});
 });
 </script>
+<div class="adminbarbg"></div>
 <div class="adminbar">
 	<div class="open">
     	<img src="<?php echo URL_PATH.'library/adminBar/images/expand.png'; ?>" width="29" height="29" alt="Expand Admin Bar" />
