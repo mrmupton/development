@@ -2,7 +2,7 @@
 include_once('../../../root.php');
 restartsession(true);
 
-new includeFiles('siteSecurity,refererRedirect,dataObject,errorReporting');
+new includeFiles('refererRedirect,dataObject,errorReporting');
 //refererRedirect used to push user back to referring page
 //dataObject used to query database for login credentials
 //errorReporting used to create an error
@@ -30,6 +30,7 @@ catch (Exception $e){
 	refRedirect($ref);
 	die();
 };
+
 if($data){
 	$storedPasswordHash = $data->passwordHash; 
 	$storedPepper = $data->passwordPepper; 
@@ -50,11 +51,11 @@ if($loginValid){
 	$stmt->bindParam(':username',$username,PDO::PARAM_STR, 18);
 	$stmt->execute();
 	refRedirect($ref);
-	die();
 }
 else {
 	$error = 'Login Invalid. Password was not correct. Please try again or Sign Up below.<br /><br /><br />'.$failedLogin; 
-	throwError($error);
-	refRedirect($ref);
-	die();
+	$_SESSION['error'] = $error;
+	header('Location: http://development/index.php');
 }
+
+?>

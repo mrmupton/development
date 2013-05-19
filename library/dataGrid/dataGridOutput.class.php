@@ -1,4 +1,5 @@
 <?php
+new includeFiles('dataObject');
 class dataGridOutput {
 	protected $columns = array();
 	protected $encoding = "utf-8";

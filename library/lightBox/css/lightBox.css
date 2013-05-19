@@ -1,0 +1,29 @@
+/* CSS Document */
+a#close {
+	background:transparent url(../images/lightBoxClose.png) no-repeat;
+	display:block; height:30px; width:30px;
+	float:right;
+}
+#close a { background:black; }
+#lightBoxMessage a#close { margin-top:-30px; margin-right:-37px; }
+#lightBoxForm a#close { margin-top:-15px; margin-right:-17px; }
+#lightBoxMessage {
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	background:white;
+	border: 1px solid #536376;
+	-webkit-box-shadow: rgba(0,0,0,.6) 0px 2px 12px;
+	-moz-box-shadow:  rgba(0,0,0,.6) 0px 2px 12px;;
+	padding:20px;
+	width: 1000px;
+	position: relative;
+}
+#lightBoxForm {
+	background:white;
+	border: 1px solid #536376;
+	-webkit-box-shadow: rgba(0,0,0,.6) 0px 2px 12px;
+	-moz-box-shadow:  rgba(0,0,0,.6) 0px 2px 12px;;
+	width: 1000px;
+	position: relative;
+}

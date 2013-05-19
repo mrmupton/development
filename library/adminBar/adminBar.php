@@ -1,8 +1,5 @@
 <?php
-//Start Session for all files including root.php
-//session.gc_maxlifetime is how long it takes a session to die with no activity
-//session.cookie_lifetime is how long it takes a session to die client side with or without activity
-if(!session_id()){ ini_set('session.gc_maxlifetime',1440); ini_set('session.cookie_lifetime',120); session_start(); session_regenerate_id(true); }
+restartsession(false);
 ?>
 <script type="text/javascript">
 var docroot = window.location.protocol + '//' + window.location.hostname + '/';
@@ -10,7 +7,7 @@ $(document).ready(function() {
 	$('.open').click(function() {
 		var w = $('.adminbar').width();
 		if(w < 200){ 
-			$('.adminbar').animate({"width":"100%"}, "slow"); 
+			$('.adminbar').animate({"width":"100%"}, "slow");
 			$('.open').html('<img src="'+docroot+'library/adminBar/images/contract.png" width="29" height="29" alt="Contract Admin Bar" />'); 
 		}
 		else { 
@@ -18,9 +15,8 @@ $(document).ready(function() {
 			$('.open').html('<img src="'+docroot+'library/adminBar/images/expand.png" width="29" height="29" alt="Contract Admin Bar" />'); 
 		}
 	});
-	$('input[type=text]').focus(function(){
-		$(this).css({'background':'white'});
-	});
+	$('input[type=text]').focus(function(){ $(this).css({'background':'white'}); });
+	$('input[type=password]').focus(function(){ $(this).css({'background':'white'}); });
 <?php 
 	if(isset($_SESSION['username'])){
 		echo '	$("#userval").html("'.$_SESSION['username'].'");'."\n";
@@ -30,30 +26,6 @@ $(document).ready(function() {
 		echo '	var username = "'.$_COOKIE['username'].'";'."\n";
 	}
 ?>
-	$("#adminForm").submit( function(event) {
-		event.preventDefault();
-		$.ajax({
-			type: 'POST',
-			url: docroot + 'library/siteSecurity/action/' + $('#form').val() + '.php',
-			datatype: 'text',
-			data:  $(this).serialize(),
-			success: function(response) {
-				var rarray = response.split(' && ');
-				$("#adminBarAccess").html(rarray[1]);
-				if(rarray[0].indexOf('logout') > -1){
-					$("#userval").html(rarray[2]);
-				}
-				if(rarray[0].indexOf('login') > -1){
-					if(username !== undefined){ $("#username").val(username); };					
-				}
-				if(rarray[0].indexOf('invalid') > -1){
-				}
-			},
-			error: function(error) {
-				$("#adminBarAccess").html(error)
-			}
-		});
-	});
 });
 </script>
 <div class="adminbarbg"></div>
@@ -61,15 +33,14 @@ $(document).ready(function() {
 	<div class="open">
     	<img src="<?php echo URL_PATH.'library/adminBar/images/expand.png'; ?>" width="29" height="29" alt="Expand Admin Bar" />
     </div>
-<form id="adminForm" method="post" action="" autocomplete="off">
+
     <div class="adminbarform"><div id="adminBarAccess">
 <?php 
-	ob_start(); include_once(ROOT_PATH.'library/siteSecurity/forms/logoutForm.php'); $logoutform = ob_get_clean();
-	ob_start(); include_once(ROOT_PATH.'library/siteSecurity/forms/loginForm.php'); $loginform = ob_get_clean();
+	ob_start(); include_once(ROOT_PATH.'library/siteSecurity/forms/logoutAdminBar.php'); $logoutform = ob_get_clean();
+	ob_start(); include_once(ROOT_PATH.'library/siteSecurity/forms/loginAdminBar.php'); $loginform = ob_get_clean();
 	if(isset($_SESSION['username'])){ echo $logoutform; }
 	else{ echo $loginform; }
 ?>
     </div></div>
-</form>
     </div>
 </div>

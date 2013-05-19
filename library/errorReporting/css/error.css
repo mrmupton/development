@@ -1,0 +1,26 @@
+/* CSS Document */
+a#close {
+	background:transparent url(../images/errorClose.png) no-repeat;
+	display:block; height:30px; width:30px;
+	float:right; margin-top:-30px; margin-right:-37px;
+	text-decoration:none;
+}
+#error {
+	float:left;
+	background:white;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	background:white url(../images/error.png) no-repeat;
+	border: 1px solid #536376;
+	-webkit-box-shadow: rgba(0,0,0,.6) 0px 2px 12px;
+	-moz-box-shadow:  rgba(0,0,0,.6) 0px 2px 12px;;
+	padding:20px 22px 34px 120px;
+	position: relative;
+	display: none;
+	width:1000px;
+}
+#error {
+	/*margin-top: 13px;*/
+}
+.errorheader { font-size:1.6em; color:red; }

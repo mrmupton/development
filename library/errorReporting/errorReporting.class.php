@@ -1,7 +1,11 @@
 <?php
-
 ini_set( 'display_errors', 0);
-// Error Handler
+
+/* Set $ref variable */
+if(!isset($_SERVER['HTTP_REFERRER'])) $ref = $_SERVER['HTTP_REFERER']; else $ref = URL_PATH.'index.php';
+
+//Restart Session - Unset Previous Variables
+restartsession(false);
 
 function handleError($errno, $errstr, $errfile, $errline)
 {
@@ -27,9 +31,16 @@ function handleError($errno, $errstr, $errfile, $errline)
 	if(strlen($errline) >= 1) { $msg .= '<tr>'."\n\t\t".'<td>On Line:</td>'."\n\t\t".'<td>'.$errline.'</td>'."\n\t".'</tr>'."\n"; }
 	$msg .= '</table>'."\n";
 	if(strlen($msg) <=  47) { $msg .= 'Error Information not found'; }
-	echo $msg;
+	throwError($msg);
     return true;
 }
 // set to the user defined error handler
 $old_error_handler = set_error_handler("handleError");
-?>
+
+// function for throwing error
+function throwError($error,$url=NULL){
+	$_SESSION['error'] = '<span class="errorheader">Sorry! There has been an error!</span><br /><br /><hr /><span class="errortext"><br /><br />'.$error.'<br /><br /></span>';
+	header('Location: '.$url);
+}
+
+if(isset($_SESSION['error'])){ unset($_SESSION['error']); }
