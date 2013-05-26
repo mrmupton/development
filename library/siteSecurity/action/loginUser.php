@@ -1,6 +1,6 @@
 <?php
 include_once('../../../root.php');
-restartsession(true);
+startSession();
 
 new includeFiles('siteSecurity,refererRedirect,dataObject,errorReporting');
 //refererRedirect used to push user back to referring page
@@ -11,7 +11,7 @@ new includeFiles('siteSecurity,refererRedirect,dataObject,errorReporting');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-if(!isset($_SERVER['HTTP_REFERRER'])) $ref = $_SERVER['HTTP_REFERER']; else $ref = URL_PATH.'index.php';
+$ref = getRef();
 
 $error = ''; $loginValid = false;
 
@@ -35,6 +35,7 @@ if($data){
 	$storedPepper = $data->passwordPepper; 
 	$pepperedPassword = $password.APP_PEPPER.$storedPepper;
 	$loginValid = blowfishEncrypt::check($pepperedPassword,$storedPasswordHash);
+	$userID = $data->userID;
 }
 else { 
 	$error .= 'The Username: <strong><u>'.$username.'</u></strong> does not exist. Please try again or click Sign Up below to create a new account.<br /><br /><br />'.$failedLogin; 
@@ -45,6 +46,7 @@ else {
 
 if($loginValid){
 	$_SESSION['username'] = $username;
+	$_SESSION['userID'] = $userID;
 	$_SESSION['isloggedin'] = true;
 	$stmt = dataObject::prepare("UPDATE securityUser SET lastLogin = NOW(), lastLogout = NOW() + INTERVAL 30 MINUTE  WHERE userName = :username"); 
 	$stmt->bindParam(':username',$username,PDO::PARAM_STR, 18);

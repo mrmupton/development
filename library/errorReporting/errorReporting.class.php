@@ -2,10 +2,10 @@
 ini_set( 'display_errors', 0);
 
 /* Set $ref variable */
-if(!isset($_SERVER['HTTP_REFERRER'])) $ref = $_SERVER['HTTP_REFERER']; else $ref = URL_PATH.'index.php';
+$ref = getRef();
 
 //Restart Session - Unset Previous Variables
-restartsession(false);
+startSession();
 
 function handleError($errno, $errstr, $errfile, $errline)
 {

@@ -1,8 +1,6 @@
 <?php
-if(!session_id()){ ini_set('session.gc_maxlifetime',1440); ini_set('session.cookie_lifetime',120); session_start(); session_regenerate_id(true); }
-session_unset();
-if(!isset($_SERVER['HTTP_REFERRER'])) $ref = $_SERVER['HTTP_REFERER'];
-else $ref = URL_PATH.'index.php';
+startSession();
+$ref = getRef(true);
 if(isset($_GET['form']) && !isset($_SESSION['error']) && !isset($_SESSION['message'])){
 	$library = ROOT_PATH.'library'; $directories = array(); $output = array(); $formInclude = 'Error'; 
 	$error = ''; $existingFormPaths = array();

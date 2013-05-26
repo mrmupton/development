@@ -25,10 +25,10 @@ define('APP_PEPPER',$parse["app_pepper"],true);
 include_once(ROOT_PATH.'library/includeFiles/includeFiles.class.php');
 
 /* Function to start session and optionally clear all existing variables */
-function restartsession($unset=true){ 
+function startSession($unset=false){ 
 	if(!session_id()){ 
-		ini_set('session.gc_maxlifetime',1440);//Length of time Server Session is valid
-		ini_set('session.cookie_lifetime',120);//Length of time User Cookie is valid
+		ini_set('session.gc_maxlifetime',7200);//Length of time Server Session is valid
+		ini_set('session.cookie_lifetime',600);//Length of time User Cookie is valid
 		session_start();
 	}
 	if($unset){
@@ -36,8 +36,19 @@ function restartsession($unset=true){
 		session_unset();
 		session_destroy();
 		session_write_close();
-		setcookie(session_name(),'',0,'/');
+		setcookie(session_name(),'',time() + 600,'/');
 		if(isset($_SESSION['username'])) unset($_SESSION['username']);
 	}
+}
+function getRef($includeQueryString=false){
+	if(isset($_SERVER['HTTP_REFERER'])){ 
+		$url = parse_url($_SERVER['HTTP_REFERER']);
+		$ref = $url['scheme'].'://'.$url['host'].$url['path'];
+		if($includeQueryString && isset($url['query'])) $ref .= '?'.$url['query'];
+	}
+	else {
+		$ref = URL_PATH.'index.php';
+	}
+	return $ref;
 }
 ?>

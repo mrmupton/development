@@ -1,8 +1,5 @@
 <?php
-//Start Session for all files including root.php
-//session.gc_maxlifetime is how long it takes a session to die with no activity
-//session.cookie_lifetime is how long it takes a session to die client side with or without activity
-if(!session_id()){ ini_set('session.gc_maxlifetime',1440); ini_set('session.cookie_lifetime',120); session_start(); session_regenerate_id(true); }
+startSession();
 ?>
 <script type="text/javascript">
 var docroot = window.location.protocol + '//' + window.location.hostname + '/';
@@ -17,9 +14,6 @@ $(document).ready(function() {
 			$('.adminbar').animate({"width":"36px"}, "slow");
 			$('.open').html('<img src="'+docroot+'library/adminBar/images/expand.png" width="29" height="29" alt="Contract Admin Bar" />'); 
 		}
-	});
-	$('input[type=text]').focus(function(){
-		$(this).css({'background':'white'});
 	});
 <?php 
 	if(isset($_SESSION['username'])){

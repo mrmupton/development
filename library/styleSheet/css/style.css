@@ -1,0 +1,11 @@
+/* CSS Document */
+body { margin:0; padding:0; background:white; }
+.white { background:white; }
+body.loggedOut { background:#324180 url(../images/wwwCreate.png) no-repeat center; margin:0; padding:0; background-attachment:fixed; color:white; }
+.loginTitle { margin:150px 0 0 10%; position:fixed; background:transparent url(../images/wwwCreateText.png) no-repeat; display:block; width:595px; height:259px; }
+.loginPageForm { margin:200px 0 0 60%; width:400px; position:fixed; }
+.clearfix:after { content: ".";	display: block;	clear: both; visibility: hidden;	line-height: 0;	height: 0;} 
+.clearfix { display: inline-block; }
+html[xmlns] .clearfix { display: block; } 
+* html .clearfix { height: 1%; }
+br.clear { clear:all; line-height:0px; height:0px; padding:0; margin:0; font:0px; display:inline-block; position:absolute; float:left; }

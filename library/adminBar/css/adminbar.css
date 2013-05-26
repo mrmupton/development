@@ -1,18 +1,19 @@
 /* CSS Document */
 .adminbar {
-	position:fixed; 
-    background:url('../images/adminbarbg.png') repeat;
+	position:relative; 
+    background:#7e90c4 url('../images/adminbarbg.png') repeat-x;
+	background-position:bottom;
     top:0;
 	right:0;
-	height:38px;
-	width:36px;
+	height:300px;
+	width:100%;
 	overflow:hidden; 
+	z-index:1000 !important;
+	padding:0 0 35px 0;
+	display:none;
 }
-.adminbar .open { float:left; padding:4px; position:relative; }
-
+.open { background:transparent url('../images/settings.png') no-repeat; float:right; padding:0px; position:relative; width:30px; height:40px; display:block; margin-top:-13px; z-index:10000 !important; }
+.open a#expand { display:block; width:30px; height:30px; text-decoration:none; margin:0; }
+.open a#freeze { display:block; width:30px; height:10px; text-decoration:none; margin:0; }
 .adminbar .adminbarform { position:relative; color:white; }
 #adminBarAccess { float:right; position:relative;  padding:6px 0; }
-.adminbar input#username { background:transparent url('../images/username.png'); width:150px; height:1.7em; border:1px solid #006;  }
-.adminbar input#username:focus { background:white; }
-.adminbar input#password { background:transparent url('../images/password.png'); width:150px; height:1.7em; border:1px solid #006;  }
-.adminbar input#password:focus { background:white; }

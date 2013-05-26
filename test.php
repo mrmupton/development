@@ -7,8 +7,6 @@
 <body>
 <?php
 //Include Necessary Files
-if(!session_id()){ ini_set('session.gc_maxlifetime',1440); ini_set('session.cookie_lifetime',120); session_start(); session_regenerate_id(true); }
-session_unset();
 include_once('root.php');
 new includeFiles('sharedFiles,dataObject,siteSecurity,styleSheet,refererRedirect,errorReporting,adminBar,headerTemplate,footerTemplate,lightBox');
 ?>

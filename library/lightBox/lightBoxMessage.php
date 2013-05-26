@@ -1,5 +1,5 @@
 <?php
-if(!session_id()){ ini_set('session.gc_maxlifetime',1440); ini_set('session.cookie_lifetime',120); session_start(); session_regenerate_id(true); }
+startSession();
 if(isset($_SESSION['message']) && !isset($_SESSION['error'])){ 
 ?>
 <script type="text/javascript">
