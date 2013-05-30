@@ -15,4 +15,4 @@ catch (Exception $e){
 	die();
 };
 
-echo 'Margin: '.$rightmargin;
+echo $rightmargin;

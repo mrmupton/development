@@ -14,8 +14,11 @@ startSession();
     	</div>
     </div>
 </div>
-<div class="open">
-	<a href="#lock" id="lock"><img src="<?php echo URL_PATH; ?>/library/adminBar/images/locked.png" title="Make this button movable" id="lockIMG" /></a>
-    <a href="#expand" id="expand"></a>
-</div><br class="clear" />
+<div class="openContainer">
+	<div class="open">
+		<a href="#lock" id="lock"><img src="<?php echo URL_PATH; ?>/library/adminBar/images/locked.png" title="Make this button movable" id="lockIMG" /></a>
+    	<a href="#expand" id="expand"></a>
+	</div>
+</div>
+<br class="clear" />
 </div>

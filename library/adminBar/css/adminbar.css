@@ -5,14 +5,15 @@
 	background-position:bottom;
     top:0;
 	right:0;
-	height:300px;
+	height:30px;
 	width:100%;
 	overflow:hidden; 
 	z-index:1000 !important;
 	padding:0 0 35px 0;
 	display:none;
 }
-.open { background:transparent url('../images/settings.png') no-repeat; float:right; padding:0px; position:relative; width:30px; height:40px; display:block; margin-top:-13px; z-index:10000 !important; }
+.openContainer { width:100%; position:relative; } 
+.open { background:transparent url('../images/settings.png') no-repeat; padding:0px; position:relative; width:30px; height:40px; display:block; margin-top:-13px; z-index:10000 !important; float:left; }
 .open a#expand { display:block; width:30px; height:30px; text-decoration:none; margin:0; }
 .open a#freeze { display:block; width:30px; height:10px; text-decoration:none; margin:0; }
 .adminbar .adminbarform { position:relative; color:white; }
